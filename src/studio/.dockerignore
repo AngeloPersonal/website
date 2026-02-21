@@ -1,0 +1,5 @@
+.sanity
+dist
+node_modules
+Dockerfile
+README.md
