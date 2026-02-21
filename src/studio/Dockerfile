@@ -16,7 +16,7 @@ RUN pnpm install --frozen-lockfile
 COPY . .
 RUN pnpm build
 
-CMD ["pnpm", "preview"]
+CMD ["pnpm", "start"]
 
 
 FROM joseluisq/static-web-server:2.41-alpine AS production

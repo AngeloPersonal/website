@@ -2,8 +2,9 @@ services:
   sanity-studio:
     build: 
       context: ./src/studio
-      target: development
+      target: production
     ports:
+      # TODO: Make port configurable via environment
       - 3000:3333
     environment:
       - SANITY_PROJECT_ID=${SANITY_PROJECT_ID}
