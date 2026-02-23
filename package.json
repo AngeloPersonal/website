@@ -1,0 +1,22 @@
+{
+  "name": "sanity-blog",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "types:extract": "pnpm --filter=sanity-studio types:extract",
+    "types:generate": "pnpm --filter=sanity-studio types:generate",
+    "types:watch": "pnpm --filter=sanity-studio types:watch",
+    "types": "pnpm types:extract && pnpm types:generate",
+    "dev:studio": "pnpm --filter=sanity-studio dev",
+    "dev:next16": "pnpm --filter=frontend-next-16 dev",
+    "dev": "concurrently \"types:watch\" \"pnpm dev:next16\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.15.1",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

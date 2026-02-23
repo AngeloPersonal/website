@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { type SanityDocument } from "next-sanity"
 import { client } from "@/sanity/client"
+import { Post } from "@local/sanity-studio"
 
 const POST_QUERY = `*[
 	_type == "post"
@@ -20,7 +21,7 @@ export default async function ArticlePage({
   params: Promise<{ slug: string }>
 }) {
 	const { slug } = await params
-	const post = await client.fetch<SanityDocument[]>(POST_QUERY, { slug }, options)
+	const post = await client.fetch<Post>(POST_QUERY, { slug }, options)
 
 	console.log("Post:", post)
 

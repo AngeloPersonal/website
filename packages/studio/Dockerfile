@@ -1,5 +1,9 @@
 FROM alpine:latest AS development
 
+# Set build arguments and environment variables
+ARG PROJECT_ID
+ENV SANITY_PROJECT_ID=${PROJECT_ID}
+
 # Enable PNPM
 RUN apk add --update nodejs npm
 ENV PNPM_HOME="/pnpm"
@@ -10,13 +14,14 @@ RUN corepack enable
 # Install dependencies
 WORKDIR /app
 COPY package.json *lock.yaml ./
-RUN pnpm install --frozen-lockfile
+RUN pnpm install 
+# --frozen-lockfile # TODO: add lockfile from workspace
 
 # Build studio
 COPY . .
 RUN pnpm build
 
-CMD ["pnpm", "start"]
+CMD ["pnpm", "dev"]
 
 
 FROM joseluisq/static-web-server:2.41-alpine AS production
