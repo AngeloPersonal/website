@@ -3,10 +3,9 @@ services:
     build: 
       context: ./packages/studio
       target: development
-      # TODO: Fix correct project ID being passed as build arg and when live
-      args:
+      args: # TODO: Use just .env.local for project ID
         - PROJECT_ID=${SANITY_PROJECT_ID}
-        - PORT=3000 # Use ENV instead of ARG?
     ports:
-      # TODO: Make port configurable via environment
       - 3000:3000
+    environment:
+      - PORT=3000

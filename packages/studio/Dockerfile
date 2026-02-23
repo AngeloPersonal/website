@@ -2,7 +2,7 @@ FROM alpine:latest AS development
 
 # Set build arguments and environment variables
 ARG PROJECT_ID
-ARG PORT=3000
+ENV PORT=3000
 
 # Enable PNPM
 RUN apk add --update nodejs npm
@@ -27,6 +27,8 @@ RUN echo "SANITY_STUDIO_PROJECT_ID='${PROJECT_ID}'" >> .env.local
 RUN pnpm build
 
 CMD ["pnpm", "start"]
+
+EXPOSE ${PORT}
 
 
 FROM joseluisq/static-web-server:2.41-alpine AS production

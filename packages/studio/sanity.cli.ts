@@ -1,7 +1,7 @@
 import {defineCliConfig} from 'sanity/cli'
 
 // const FRONTEND_TARGET = process.env.FRONTEND_TARGET || "../frontend-next-16";
-console.log("EXPORTS:", process.env);
+// console.log("EXPORTS:", process.env);
 
 export default defineCliConfig({
   api: {
@@ -10,7 +10,7 @@ export default defineCliConfig({
   },
   server: {
     hostname: "0.0.0.0",
-    port: 3000, // TODO: Read from environment variable
+    port: process.env.PORT ? parseInt(process.env.PORT, 10) : 3333,
   },
   deployment: {
     /**
