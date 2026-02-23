@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { type SanityDocument } from "next-sanity"
-import { client } from "@/sanity/client"
+import { client } from "@/components/sanity/client"
 
 const POSTS_QUERY = `*[
 	_type == "post"
