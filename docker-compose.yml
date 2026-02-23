@@ -1,13 +1,12 @@
 services:
   sanity-studio:
     build: 
-      context: ./src/studio
+      context: ./packages/studio
       target: development
       # TODO: Fix correct project ID being passed as build arg and when live
       args:
         - PROJECT_ID=${SANITY_PROJECT_ID}
+        - PORT=3000 # Use ENV instead of ARG?
     ports:
       # TODO: Make port configurable via environment
-      - 3000:3333
-    environment:
-      - SANITY_PROJECT_ID=${SANITY_PROJECT_ID}
+      - 3000:3000

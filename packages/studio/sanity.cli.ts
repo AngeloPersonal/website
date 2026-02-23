@@ -1,12 +1,16 @@
 import {defineCliConfig} from 'sanity/cli'
 
 // const FRONTEND_TARGET = process.env.FRONTEND_TARGET || "../frontend-next-16";
-// console.log("EXPORTS:", process.env);
+console.log("EXPORTS:", process.env);
 
 export default defineCliConfig({
   api: {
-    projectId: process.env.SANITY_PROJECT_ID || 'jx3vhi63',
+    projectId: process.env.SANITY_STUDIO_PROJECT_ID,
     dataset: 'production'
+  },
+  server: {
+    hostname: "0.0.0.0",
+    port: 3000, // TODO: Read from environment variable
   },
   deployment: {
     /**
