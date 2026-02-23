@@ -18,6 +18,8 @@
     "sanity"
   ],
   "dependencies": {
+    "@codemirror/lang-rust": "^6.0.2",
+    "@sanity/code-input": "^7.0.8",
     "@sanity/color-input": "^6.0.4",
     "@sanity/vision": "^5.11.0",
     "react": "^19.1",

@@ -3,6 +3,7 @@ import {structureTool} from 'sanity/structure'
 import {presentationTool} from 'sanity/presentation'
 import {visionTool} from '@sanity/vision'
 import {colorInput} from '@sanity/color-input'
+import {codeInput} from '@sanity/code-input'
 import {schemaTypes} from './schemaTypes'
 import {presentationToolConfig} from './config'
 
@@ -18,10 +19,20 @@ export default defineConfig({
 	dataset: 'production',
 
 	plugins: [
+		// Tools
 		structureTool(), 
 		presentationTool(presentationToolConfig),
 		visionTool(),
+		// Input plugins
 		colorInput(),
+		codeInput({
+			codeModes: [
+				{
+					name: 'rust', // The language is only loaded when it is selected
+					loader: () => import('@codemirror/lang-rust').then(({rust}) => rust()),
+				},
+			],
+		}),
 	],
 	schema: {
 		types: schemaTypes,

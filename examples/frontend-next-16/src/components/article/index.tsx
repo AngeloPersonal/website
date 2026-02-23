@@ -1,6 +1,7 @@
 import { Category, Post } from "@local/sanity-studio"
 import style from "./article.module.scss"
 import { PortableText, PortableTextBlock } from "next-sanity"
+import { portableTextComponents } from "@/components/text"
 
 type ArticleProps = {
     post: Post,
@@ -20,6 +21,7 @@ export default function Article({ post, category }: ArticleProps) {
                 {post.body?.length && (
                     <PortableText
                         value={post.body as PortableTextBlock[]}
+                        components={portableTextComponents}
                     />
                 )}
             </div>

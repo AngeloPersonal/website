@@ -1,0 +1,24 @@
+.codeBlock {
+    border-radius: 0.4rem;
+    overflow: hidden;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.codeBlock pre {
+    padding: 1rem;
+    font-family: var(--font-geist-mono);
+}
+
+.lang {
+	position: absolute;
+	top: 2px;
+	right: 8px;
+	z-index: 2;
+	font-size: 12px;
+	font-weight: 500;
+	-webkit-user-select: none;
+	user-select: none;
+	color: gray;
+	transition: color .4s,opacity .4s;
+}
