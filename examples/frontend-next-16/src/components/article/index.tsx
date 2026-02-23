@@ -1,16 +1,16 @@
-import { Post } from "@local/sanity-studio"
+import { Category, Post } from "@local/sanity-studio"
 import style from "./article.module.scss"
 import { PortableText, PortableTextBlock } from "next-sanity"
 
 type ArticleProps = {
-    post: Post
+    post: Post,
+    category?: Category
 }
 
-export default function Article({ post }: ArticleProps) {
-
+export default function Article({ post, category }: ArticleProps) {
     return (
         <>
-            <div className={style.header} style={{ backgroundColor: "red", color: "black" }}>
+            <div className={style.header} style={{ backgroundColor: category?.backgroundColor?.hex || "red", color: category?.textColor?.hex || "white" }}>
                 <div className={style.headerContent}>
                     <h1>{post.title}</h1>
                     <p>{post.publishedAt}</p>
@@ -23,7 +23,6 @@ export default function Article({ post }: ArticleProps) {
                     />
                 )}
             </div>
-            {/* <p>{post.body}</p> */}
         </>
     )
 }

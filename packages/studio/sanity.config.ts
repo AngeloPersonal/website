@@ -1,9 +1,10 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
-import {presentationTool} from 'sanity/presentation';
+import {presentationTool} from 'sanity/presentation'
 import {visionTool} from '@sanity/vision'
+import {colorInput} from '@sanity/color-input'
 import {schemaTypes} from './schemaTypes'
-import {presentationToolConfig} from './config';
+import {presentationToolConfig} from './config'
 
 /**
  * This is the configuration file for the Sanity Studio that is used to manage the content of the blog. 
@@ -20,6 +21,7 @@ export default defineConfig({
 		structureTool(), 
 		presentationTool(presentationToolConfig),
 		visionTool(),
+		colorInput(),
 	],
 	schema: {
 		types: schemaTypes,

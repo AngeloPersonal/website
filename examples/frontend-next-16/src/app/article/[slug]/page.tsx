@@ -11,7 +11,12 @@ const query = defineQuery(`*[
 	title,
 	slug,
 	publishedAt,
-	categories,
+	category->{
+		_id,
+		title,
+		textColor,
+		backgroundColor
+	},
 	body
 }`);
 
@@ -23,5 +28,13 @@ type PageProps = {
 
 export default async function Page({ params }: PageProps) {
 	const { data: post } = await sanityFetch({query: query, params});
-	return post ? (<Article post={post}/>) : <h1>Post not found</h1>;
+
+	console.log(post.category);
+
+	return post ? (
+		<Article 
+			post={post} 
+			category={post.category}
+		/>
+	) : <h1>Post not found</h1>;
 }

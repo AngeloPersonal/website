@@ -15,5 +15,15 @@ export default defineType({
       title: 'Description',
       type: 'text',
     }),
+    defineField({
+      name: 'backgroundColor',
+      title: 'Background color',
+      type: 'color',
+    }),
+    defineField({
+      name: 'textColor',
+      title: 'Text color',
+      type: 'color',
+    }),
   ],
 })
