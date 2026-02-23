@@ -5,6 +5,7 @@ import "./globals.css";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { draftMode } from "next/headers";
 import { SanityLive } from "@/sanity/lib/live";
+import LiveEditToast from "@/components/toast";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -31,7 +32,7 @@ export default async function RootLayout({
 			<body>
 				{(await draftMode()).isEnabled && (
 					<>
-						<div>EDITING MODE</div>
+						<LiveEditToast />
 						<VisualEditing />
 					</>
 				)}

@@ -1,8 +1,8 @@
 import Link from "next/link"
-import { type SanityDocument } from "next-sanity"
+import { defineQuery, type SanityDocument } from "next-sanity"
 import { client } from "@/sanity/lib/client"
 
-const POSTS_QUERY = `*[
+const POSTS_QUERY = defineQuery(`*[
 	_type == "post"
 	&& defined(slug.current)
 ]|order(publishedAt desc)[0...12]{
@@ -10,14 +10,12 @@ const POSTS_QUERY = `*[
 	title,
 	slug,
 	publishedAt
-}`
+}`);
 
 const options = { next: { revalidate: 30 } }
 
 export default async function Home() {
 	const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options)
-
-  console.log("Fetched posts:", posts)
 
 	return (
 		<main>
