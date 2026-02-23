@@ -5,7 +5,6 @@ export const client = createClient({
 	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
 	apiVersion: "2021-10-21",
 	useCdn: false,
-	token: process.env.SANITY_VIEWER_TOKEN,
 	stega: {
 		studioUrl: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL,
 	},

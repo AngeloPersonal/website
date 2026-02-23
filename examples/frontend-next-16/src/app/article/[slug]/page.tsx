@@ -1,7 +1,8 @@
 import { defineQuery } from "next-sanity";
-import { draftMode } from "next/headers";
-import { client } from "@/components/sanity/client";
+// import { draftMode } from "next/headers";
+// import { client } from "@/components/sanity/client";
 import { Post } from "@local/sanity-studio";
+import { sanityFetch } from "@/sanity/lib/live";
 
 const query = defineQuery(`*[
 	_type == "post"
@@ -15,32 +16,22 @@ const query = defineQuery(`*[
 	body
 }`);
 
-export default async function Page({
-	params,
-}: {
-	params: Promise<{ slug: string }>;
-}) {
-	const { slug } = await params;
-	const { isEnabled } = await draftMode();
+type PageProps = {
+	params: {
+		slug: string;
+	};
+};
 
-	const data = await client.fetch<Post>(
-		query,
-		{ slug },
-		isEnabled
-			? {
-				perspective: "drafts",
-				useCdn: false,
-				stega: true,
-			}
-			: undefined
-	);
+export default async function Page({ params }: PageProps) {
+	const { data } = await sanityFetch({query: query, params});
+	const post = data as Post | null;
 
-	console.log("Fetched data:", data);
+	console.log("Fetched data:", post);
 
-	return data ? (
+	return post ? (
 		<>
-			<h1>{data.title}</h1>
-			<p>{data._id}</p>
+			<h1>{post.title}</h1>
+			<p>{post._id}</p>
 		</>
 	) : <h1>Post not found</h1>;
 }
