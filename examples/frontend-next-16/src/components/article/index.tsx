@@ -1,7 +1,8 @@
-import { Category, Post } from "@local/sanity-studio"
-import style from "./article.module.scss"
 import { PortableText, PortableTextBlock } from "next-sanity"
 import { portableTextComponents } from "@/components/text"
+import { Category, Post } from "@local/sanity-studio"
+import style from "./article.module.scss"
+import SuggestedArticles from "./suggestions"
 
 type ArticleProps = {
     post: Post,
@@ -25,6 +26,7 @@ export default function Article({ post, category }: ArticleProps) {
                     />
                 )}
             </div>
+            <SuggestedArticles/>
         </>
     )
 }
