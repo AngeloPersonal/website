@@ -13,6 +13,15 @@
  */
 
 // Source: schema.json
+export type Tag = {
+  _id: string;
+  _type: "tag";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+};
+
 export type SanityImageAssetReference = {
   _ref: string;
   _type: "reference";
@@ -69,6 +78,13 @@ export type CategoryReference = {
   [internalGroqTypeReferenceTo]?: "category";
 };
 
+export type TagReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "tag";
+};
+
 export type Post = {
   _id: string;
   _type: "post";
@@ -88,6 +104,11 @@ export type Post = {
   category?: CategoryReference;
   publishedAt?: string;
   body?: BlockContent;
+  tags?: Array<
+    {
+      _key: string;
+    } & TagReference
+  >;
 };
 
 export type SanityImageCrop = {
@@ -113,7 +134,7 @@ export type Category = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  description?: string;
+  parent?: CategoryReference;
   backgroundColor?: Color;
   textColor?: Color;
 };
@@ -303,10 +324,12 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
+  | Tag
   | SanityImageAssetReference
   | BlockContent
   | AuthorReference
   | CategoryReference
+  | TagReference
   | Post
   | SanityImageCrop
   | SanityImageHotspot
@@ -329,39 +352,3 @@ export type AllSanitySchemaTypes =
   | Geopoint;
 
 export declare const internalGroqTypeReferenceTo: unique symbol;
-
-// Source: ../../examples/frontend-next-16/src/app/article/[slug]/page.tsx
-// Variable: query
-// Query: *[	_type == "post"	&& slug.current == $slug][0]{	_id,	title,	slug,	publishedAt,	category->{		_id,		title,		textColor,		backgroundColor	},	body}
-export type QueryResult = {
-  _id: string;
-  title: string | null;
-  slug: Slug | null;
-  publishedAt: string | null;
-  category: {
-    _id: string;
-    title: string | null;
-    textColor: Color | null;
-    backgroundColor: Color | null;
-  } | null;
-  body: BlockContent | null;
-} | null;
-
-// Source: ../../examples/frontend-next-16/src/app/page.tsx
-// Variable: POSTS_QUERY
-// Query: *[	_type == "post"	&& defined(slug.current)]|order(publishedAt desc)[0...12]{	_id,	title,	slug,	publishedAt}
-export type POSTS_QUERY_RESULT = Array<{
-  _id: string;
-  title: string | null;
-  slug: Slug | null;
-  publishedAt: string | null;
-}>;
-
-// Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
-  interface SanityQueries {
-    '*[\n\t_type == "post"\n\t&& slug.current == $slug\n][0]{\n\t_id,\n\ttitle,\n\tslug,\n\tpublishedAt,\n\tcategory->{\n\t\t_id,\n\t\ttitle,\n\t\ttextColor,\n\t\tbackgroundColor\n\t},\n\tbody\n}': QueryResult;
-    '*[\n\t_type == "post"\n\t&& defined(slug.current)\n]|order(publishedAt desc)[0...12]{\n\t_id,\n\ttitle,\n\tslug,\n\tpublishedAt\n}': POSTS_QUERY_RESULT;
-  }
-}

@@ -1,0 +1,13 @@
+import style from './navbar.module.css'
+
+export default function Navbar() {
+    return (
+        <nav className={style.navbar}>
+            <div className={style.content}>
+                <ul className={style.list}>
+                    <li>cd /home/angelo</li>
+                </ul>
+            </div>
+        </nav>
+    )
+}
