@@ -4,6 +4,7 @@ import {presentationTool} from 'sanity/presentation'
 import {visionTool} from '@sanity/vision'
 import {colorInput} from '@sanity/color-input'
 import {codeInput} from '@sanity/code-input'
+import {latexInput} from "sanity-plugin-latex-input"
 import {schemaTypes} from './schemaTypes'
 import {presentationToolConfig} from './config'
 
@@ -33,6 +34,7 @@ export default defineConfig({
 				},
 			],
 		}),
+		latexInput(),
 	],
 	schema: {
 		types: schemaTypes,

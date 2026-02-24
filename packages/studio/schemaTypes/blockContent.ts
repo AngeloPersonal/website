@@ -73,5 +73,9 @@ export default defineType({
 				],
 			},
 		}),
+		/// https://www.sanity.io/plugins/latex-input
+		defineArrayMember({
+			type: "latex",
+		}),
 	],
 })

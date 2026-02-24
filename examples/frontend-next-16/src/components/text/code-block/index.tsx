@@ -35,6 +35,7 @@ export default async function CodeBlock({
 					{value.filename}
 				</div>
 			)}
+			<button className={style.copy}></button>
 			<span className={style.lang}>{value.language}</span>
 			<div dangerouslySetInnerHTML={{ __html: out }} />
 		</div>
