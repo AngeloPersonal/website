@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
 import { VisualEditing } from "next-sanity/visual-editing";
@@ -29,7 +29,7 @@ export default async function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body>
+			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				{(await draftMode()).isEnabled && (
 					<>
 						<LiveEditToast />

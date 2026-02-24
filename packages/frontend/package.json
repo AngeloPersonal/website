@@ -10,13 +10,16 @@
   },
   "dependencies": {
     "@sanity/client": "^7.15.0",
+    "katex": "^0.16.33",
     "next": "16.1.6",
     "next-sanity": "^12.1.0",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "shiki": "^3.22.0"
   },
   "devDependencies": {
     "@local/sanity-studio": "workspace:*",
+    "@types/katex": "^0.16.8",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -47,6 +47,12 @@ export type BlockContent = Array<
       _type: "image";
       _key: string;
     }
+  | ({
+      _key: string;
+    } & Code)
+  | ({
+      _key: string;
+    } & Latex)
 >;
 
 export type AuthorReference = {
@@ -160,6 +166,19 @@ export type Slug = {
   _type: "slug";
   current?: string;
   source?: string;
+};
+
+export type Latex = {
+  _type: "latex";
+  body?: string;
+};
+
+export type Code = {
+  _type: "code";
+  language?: string;
+  filename?: string;
+  code?: string;
+  highlightedLines?: Array<number>;
 };
 
 export type RgbaColor = {
@@ -295,6 +314,8 @@ export type AllSanitySchemaTypes =
   | Color
   | Author
   | Slug
+  | Latex
+  | Code
   | RgbaColor
   | HsvaColor
   | HslaColor
