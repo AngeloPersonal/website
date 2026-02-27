@@ -1,4 +1,4 @@
-import {defineType, defineArrayMember} from 'sanity'
+import {defineType, defineArrayMember, defineField} from 'sanity'
 import LatexIcon from '../icons/latex'
 import MathIcon from '../icons/math'
 
@@ -72,6 +72,18 @@ export default defineType({
 		defineArrayMember({
 			type: 'image',
 			options: {hotspot: true},
+			fields:[
+				defineField({
+					name:'alt',
+					type:'string',
+					validation:Rule => Rule.required(),
+				}),
+				defineField({
+					name:'caption',
+					type:'string',
+				}),
+			],
+			validation:Rule=>Rule.required().assetRequired(),
 		}),
 		/// https://www.sanity.io/plugins/code-input
 		defineArrayMember({

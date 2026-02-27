@@ -1,5 +1,4 @@
 import { defineQuery } from "next-sanity";
-import { Post } from "@local/sanity-studio";
 import { sanityFetch } from "@/sanity/lib/live";
 import Article from "@/components/article";
 
