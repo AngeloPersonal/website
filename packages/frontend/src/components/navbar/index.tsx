@@ -1,7 +1,9 @@
+import style from './nav.module.scss';
+
 export default function Navbar() {
     return (
-        <nav>
-            
+        <nav className={style.navbar}>
+            NAVBAR
         </nav>
     )
 }

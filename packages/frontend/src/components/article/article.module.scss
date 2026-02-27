@@ -2,6 +2,10 @@ $width: 976px;
 
 .header {
     padding: 4rem 0;
+
+    & h1 {
+        font-size: 3.5rem;
+    }
 }
 
 .headerContent {
@@ -15,7 +19,7 @@ $width: 976px;
     
     padding: 2rem 0;
     
-    &>* { padding: 0 2rem; }
+    & p, h1, h2, h3 { padding: 0 2rem; }
     & p { margin-bottom: 1rem; }
     & img { margin-bottom: 1rem; padding: 0; }
 }

@@ -6,6 +6,7 @@ import { VisualEditing } from "next-sanity/visual-editing";
 import { draftMode } from "next/headers";
 import { SanityLive } from "@/sanity/lib/live";
 import LiveEditToast from "@/components/toast";
+import Navbar from "@/components/navbar";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default async function RootLayout({
 					</>
 				)}
 				<SanityLive />
+				<Navbar/>
 				{children}
 			</body>
 		</html>
