@@ -1,4 +1,6 @@
 import {defineType, defineArrayMember} from 'sanity'
+import LatexIcon from '../icons/latex'
+import MathIcon from '../icons/math'
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -18,6 +20,14 @@ export default defineType({
 		defineArrayMember({
 			title: 'Block',
 			type: 'block',
+			// Inline latex
+			of: [
+				defineArrayMember({
+					type: "latex",
+					title: "Inline math",
+					icon: MathIcon,
+				}),
+			],
 			// Styles let you set what your user can mark up blocks with. These
 			// correspond with HTML tags, but you can set any title or value
 			// you want and decide how you want to deal with it where you want to
@@ -73,9 +83,11 @@ export default defineType({
 				],
 			},
 		}),
-		/// https://www.sanity.io/plugins/latex-input
+		/// https://www.sanity.io/plugins/sanity-plugin-latex-input
 		defineArrayMember({
 			type: "latex",
+			title: "Math block",
+			icon: LatexIcon,
 		}),
 	],
 })

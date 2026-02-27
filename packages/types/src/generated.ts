@@ -22,12 +22,17 @@ export type SanityImageAssetReference = {
 
 export type BlockContent = Array<
   | {
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
+      children?: Array<
+        | {
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }
+        | ({
+            _key: string;
+          } & Latex)
+      >;
       style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
       listItem?: "bullet";
       markDefs?: Array<{
