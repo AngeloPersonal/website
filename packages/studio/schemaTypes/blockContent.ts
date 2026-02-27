@@ -89,9 +89,12 @@ export default defineType({
 		defineArrayMember({
 			type: "code",
 			options: {
+				language: 'text',
 				languageAlternatives: [
 					{title: 'JavaScript', value: 'javascript'},
 					{title: 'Rust', value: 'rust', mode: 'rust'},
+					{title: 'Text', value: 'text'},
+					{title: 'GROQ', value: 'groq'},
 				],
 			},
 		}),

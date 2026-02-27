@@ -22,10 +22,17 @@ export default async function CodeBlock({
 }: 
 	Props
 ) {
+	// TODO: Better error handling
 	const out = await codeToHtml(value.code ?? "", {
 		lang: value.language ?? "text",
 		themes: theme,
 		defaultColor: "light",
+	}).catch((e) => {
+		return codeToHtml(value.code ?? "ERROR", {
+			lang: "text",
+			themes: theme,
+			defaultColor: "light"
+		})
 	})
 
 	return (
