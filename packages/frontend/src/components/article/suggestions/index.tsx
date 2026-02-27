@@ -6,6 +6,7 @@ import { Post } from "@local/sanity-studio";
 const RECENT_POSTS_QUERY = defineQuery(`*[
 	_type == "post"
 	&& defined(slug.current)
+	&& _id != $currentId
 ]|order(publishedAt desc, _createdAt desc)[0...4]{
 	_id,
 	title,
@@ -19,10 +20,8 @@ const RECENT_POSTS_QUERY = defineQuery(`*[
 
 const placeholder = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 
-export default async function SuggestedArticles() {
-    const articles = await sanityFetch({ query: RECENT_POSTS_QUERY });
-
-    console.log("Suggested articles", articles)
+export default async function SuggestedArticles({ currentId }: { currentId: string }) {
+    const articles = await sanityFetch({ query: RECENT_POSTS_QUERY, params: { currentId } });
 
     return (
         <div className={style.wrapper}>
