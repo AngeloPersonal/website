@@ -3,6 +3,7 @@
     overflow: hidden;
     margin: 1rem 0;
     position: relative;
+	padding: 0 !important;
 }
 
 .codeBlock pre {
@@ -14,7 +15,7 @@
 .lang {
 	position: absolute;
 	top: 2px;
-	right: 8px;
+	right: 8px; /* right: 4.5rem; */
 	z-index: 2;
 	font-size: 12px;
 	font-weight: 500;

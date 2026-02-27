@@ -1,26 +1,31 @@
+$width: 976px;
+
 .header {
     padding: 4rem 0;
 }
 
 .headerContent {
-    max-width: 800px;
+    max-width: $width;
     margin: 0 auto;
 }
 
 .body {
     margin: 0 auto;
-    max-width: 800px;
-
+    max-width: $width;
+    
     padding: 2rem 0;
-
+    
+    &>* { padding: 0 2rem; }
     & p { margin-bottom: 1rem; }
-    & img { margin-bottom: 1rem; }
+    & img { margin-bottom: 1rem; padding: 0; }
 }
 
 
 /* Suggestions */
+$width: 1200px;
+
 .wrapper {
-    max-width: 1000px; /* 100% works well too */
+    max-width: $width; /* 100% works well too */
     margin: 0 auto;
     padding-top: 2rem;
 }

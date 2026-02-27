@@ -3,8 +3,8 @@ import { urlFor } from '@/sanity/lib/image'
 import style from './image.module.scss'
 
 export function ImageBlock({ image }: { image: any }){
-	const w = image.width || 1200;
-	const ar = image?.asset?.metadata?.dimensions?.aspectRatio || 1;
+	const w = image.width || 976;
+	const ar = image?.asset?.metadata?.dimensions?.aspectRatio || 1.83;
 	const h = Math.round(w/ar);
 
 	return (
