@@ -38,10 +38,6 @@ $width: 1000px;
 }
 
 .toc {
-    position: sticky;
-    top: 2rem;
-    align-self: start;
-
     @media (max-width: 800px) {
         display: none;
     }

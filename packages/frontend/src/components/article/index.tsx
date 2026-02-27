@@ -4,6 +4,7 @@ import { Author, Category, Post } from "@local/sanity-studio"
 import style from "./article.module.scss"
 import SuggestedArticles from "./suggestions"
 import TableOfContents from "./toc"
+import StickyAside from "./toc/sticky-aside"
 import Link from "next/link"
 
 type ArticleProps = {
@@ -44,9 +45,9 @@ export default function Article({ post, category, author }: ArticleProps) {
                         />
                     )}
                 </div>
-                <aside className={style.toc}>
+                <StickyAside className={style.toc}>
                     <TableOfContents body={post.body ?? []} />
-                </aside>
+                </StickyAside>
             </div>
             <SuggestedArticles currentId={post._id}/>
         </>
