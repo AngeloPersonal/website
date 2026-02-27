@@ -1,32 +1,9 @@
-import Link from "next/link"
-import { defineQuery, type SanityDocument } from "next-sanity"
-import { client } from "@/sanity/lib/client"
+import Link from "next/link";
 
-const POSTS_QUERY = defineQuery(`*[
-	_type == "post"
-	&& defined(slug.current)
-]|order(publishedAt desc)[0...12]{
-	_id,
-	title,
-	slug,
-	publishedAt
-}`);
-
-const options = { next: { revalidate: 30 } }
-
-export default async function Home() {
-	const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options)
-
-	return (
-		<main>
-			<h1>Posts</h1>
-			<ul>
-				{posts.map((post) => (
-					<li key={post._id}>
-						<Link href={`/article/${post.slug.current}`}>{post.title}</Link>
-					</li>
-				))}
-			</ul>
-		</main>
-	)
+export default function() {
+    return (
+        <div>
+            <Link href={"/article"}>Articles</Link>
+        </div>
+    )
 }
