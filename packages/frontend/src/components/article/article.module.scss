@@ -81,21 +81,25 @@ $width: 1200px;
 .link:nth-of-type(3) { 
     .post {
         background-image: url("./dot-w.svg") !important; 
+        background-color: #000; 
+        &:hover { color: #ccc; } 
     }
-
+    
     .text {
         background-color: #000; 
         color: #fff; 
     }
-
+    
     & .post:hover .text {
         background-color: #fff; 
         color: #000;
     }
     
-    & .tag {
-        background-color: #fff;
-        color: #000;
+    @media (prefers-color-scheme: dark) {
+        & .tag {
+            background-color: #fff;
+            color: #000;
+        }
     }
 }
 
