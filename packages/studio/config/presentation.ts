@@ -53,8 +53,8 @@ export default {
                             href: `/article/${doc?.slug}`,
                         },
                         {
-                            title: "Home",
-                            href: "/",
+                            title: "All Articles",
+                            href: "/article",
                         },
                     ],
                 }),
