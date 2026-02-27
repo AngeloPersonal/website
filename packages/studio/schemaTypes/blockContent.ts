@@ -86,7 +86,7 @@ export default defineType({
 		/// https://www.sanity.io/plugins/sanity-plugin-latex-input
 		defineArrayMember({
 			type: "latex",
-			title: "Math block",
+			title: "",
 			icon: LatexIcon,
 		}),
 	],
