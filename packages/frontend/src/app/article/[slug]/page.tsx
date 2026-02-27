@@ -20,7 +20,19 @@ const query = defineQuery(`*[
 		_id,
 		name
 	},
-	body
+	body[]{
+		...,
+		_type == "image" => {
+			...,
+			asset->{
+				_id,
+				metadata {
+					dimensions { width, height, aspectRatio },
+					lqip
+				}
+			}
+		}
+	}
 }`);
 
 type PageProps = {
