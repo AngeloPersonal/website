@@ -13,15 +13,38 @@ $width: 976px;
     margin: 0 auto;
 }
 
-.body {
-    margin: 0 auto;
+// Content and ToC
+$width: 1000px;
+
+.bodyWrapper {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 2rem;
     max-width: $width;
-    
+    margin: 0 auto;
     padding: 2rem 0;
-    
+
+    @media (max-width: 800px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.body {
+    min-width: 0;
+
     & p, h1, h2, h3 { padding: 0 2rem; }
     & p { margin-bottom: 1rem; }
     & img { margin-bottom: 1rem; padding: 0; }
+}
+
+.toc {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+
+    @media (max-width: 800px) {
+        display: none;
+    }
 }
 
 

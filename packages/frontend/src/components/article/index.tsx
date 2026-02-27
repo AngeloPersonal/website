@@ -3,6 +3,7 @@ import { portableTextComponents } from "@/components/text"
 import { Author, Category, Post } from "@local/sanity-studio"
 import style from "./article.module.scss"
 import SuggestedArticles from "./suggestions"
+import TableOfContents from "./toc"
 import Link from "next/link"
 
 type ArticleProps = {
@@ -34,13 +35,18 @@ export default function Article({ post, category, author }: ArticleProps) {
                     </div>
                 </div>
             </div>
-            <div className={style.body}>
-                {post.body?.length && (
-                    <PortableText
-                        value={post.body as PortableTextBlock[]}
-                        components={portableTextComponents}
-                    />
-                )}
+            <div className={style.bodyWrapper}>
+                <div className={style.body}>
+                    {post.body?.length && (
+                        <PortableText
+                            value={post.body as PortableTextBlock[]}
+                            components={portableTextComponents}
+                        />
+                    )}
+                </div>
+                <aside className={style.toc}>
+                    <TableOfContents body={post.body ?? []} />
+                </aside>
             </div>
             <SuggestedArticles currentId={post._id}/>
         </>
