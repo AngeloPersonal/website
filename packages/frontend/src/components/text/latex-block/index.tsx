@@ -12,17 +12,28 @@ function stripDelimiters(input: string) {
 		.replace(/^\s*\\\[(.*)\\\]\s*$/s, "$1")
 }
 
-export default function LatexBlock({ value } : { value: Latex }) {
-    const latex = stripDelimiters(value?.body ?? "")
+type LatexBlockTypes = {
+    value: Latex; 
+    inline: boolean;
+}
+
+export default function LatexBlock({ value, inline } : LatexBlockTypes) {
+    if (!value.body) { return ""; }
+
+    // const latex = stripDelimiters(value?.body ?? "")
+    const latex = value?.body;
+
     const html = katex.renderToString(latex, {
-        displayMode: true,
+        displayMode: !inline,
         throwOnError: false,
         strict: "warn",
     })
 
+    const Tag = inline ? "span" : "div";
+
     return (
-        <div
-            className={style.block}
+        <Tag
+            className={inline ? undefined : style.block}
             dangerouslySetInnerHTML={{__html: html}}
         />
     )

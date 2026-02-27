@@ -329,39 +329,3 @@ export type AllSanitySchemaTypes =
   | Geopoint;
 
 export declare const internalGroqTypeReferenceTo: unique symbol;
-
-// Source: ../../examples/frontend-next-16/src/app/article/[slug]/page.tsx
-// Variable: query
-// Query: *[	_type == "post"	&& slug.current == $slug][0]{	_id,	title,	slug,	publishedAt,	category->{		_id,		title,		textColor,		backgroundColor	},	body}
-export type QueryResult = {
-  _id: string;
-  title: string | null;
-  slug: Slug | null;
-  publishedAt: string | null;
-  category: {
-    _id: string;
-    title: string | null;
-    textColor: Color | null;
-    backgroundColor: Color | null;
-  } | null;
-  body: BlockContent | null;
-} | null;
-
-// Source: ../../examples/frontend-next-16/src/app/page.tsx
-// Variable: POSTS_QUERY
-// Query: *[	_type == "post"	&& defined(slug.current)]|order(publishedAt desc)[0...12]{	_id,	title,	slug,	publishedAt}
-export type POSTS_QUERY_RESULT = Array<{
-  _id: string;
-  title: string | null;
-  slug: Slug | null;
-  publishedAt: string | null;
-}>;
-
-// Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
-  interface SanityQueries {
-    '*[\n\t_type == "post"\n\t&& slug.current == $slug\n][0]{\n\t_id,\n\ttitle,\n\tslug,\n\tpublishedAt,\n\tcategory->{\n\t\t_id,\n\t\ttitle,\n\t\ttextColor,\n\t\tbackgroundColor\n\t},\n\tbody\n}': QueryResult;
-    '*[\n\t_type == "post"\n\t&& defined(slug.current)\n]|order(publishedAt desc)[0...12]{\n\t_id,\n\ttitle,\n\tslug,\n\tpublishedAt\n}': POSTS_QUERY_RESULT;
-  }
-}

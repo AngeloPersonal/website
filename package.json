@@ -10,7 +10,7 @@
     "types": "pnpm types:extract && pnpm types:generate",
     "dev:studio": "pnpm --filter=sanity-studio dev",
     "dev:next16": "pnpm --filter=frontend-next-16 dev",
-    "dev": "concurrently \"types:watch\" \"pnpm dev:next16\""
+    "dev": "concurrently \"pnpm types:watch\" \"pnpm dev:next16\""
   },
   "keywords": [],
   "author": "",
