@@ -9,25 +9,25 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@sanity/client": "^7.15.0",
+    "@sanity/client": "^7.16.0",
     "@sanity/image-url": "^2.0.3",
     "katex": "^0.16.33",
     "next": "16.1.6",
     "next-sanity": "^12.1.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "shiki": "^3.22.0"
+    "shiki": "^3.23.0"
   },
   "devDependencies": {
     "@local/sanity-studio": "workspace:*",
     "@types/katex": "^0.16.8",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
+    "@types/node": "^20.19.35",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.3",
     "eslint-config-next": "16.1.6",
     "sass": "^1.97.3",
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   },
   "packageManager": "pnpm@10.15.1"
 }

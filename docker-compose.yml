@@ -6,6 +6,6 @@ services:
       args: # TODO: Use just .env.local for project ID
         - PROJECT_ID=${SANITY_PROJECT_ID}
     ports:
-      - 3000:3000
+      - 3333:3333
     environment:
-      - PORT=3000
+      - PORT=3333

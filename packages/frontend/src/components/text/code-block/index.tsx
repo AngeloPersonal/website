@@ -22,7 +22,6 @@ export default async function CodeBlock({
 }: 
 	Props
 ) {
-	console.log(value.code, value.language, theme)
 	const out = await highlightToHtml(value.code!, value.language, theme)
 
 	return (
