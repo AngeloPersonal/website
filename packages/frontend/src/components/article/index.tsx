@@ -22,8 +22,8 @@ export default function Article({ post, category, author }: ArticleProps) {
             <div className={style.header} style={{ backgroundColor: category?.backgroundColor?.hex || "red", color: category?.textColor?.hex || "white" }}>
                 <div className={style.headerContent}>
                     <div className={style.category}>
-                        <Link href={"/"}>Articles &gt; </Link> 
-                        <Link href={`/articles?category=${category?.title || "uncategorized"}`}>
+                        <Link href={"/article"}>Articles &gt; </Link> 
+                        <Link href={`/article?category=${category?.title || "uncategorized"}`}>
                             {category?.title || "Uncategorized"}
                         </Link>
                         </div>

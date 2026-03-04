@@ -20,11 +20,19 @@ export default defineType({
 		defineArrayMember({
 			title: 'Block',
 			type: 'block',
+<<<<<<< HEAD
+=======
+			// Inline latex
+>>>>>>> master
 			of: [
 				defineArrayMember({
 					type: "latex",
 					title: "Inline math",
+<<<<<<< HEAD
 					// icon: mathInlineIcon,
+=======
+					icon: MathIcon,
+>>>>>>> master
 				}),
 			],
 			// Styles let you set what your user can mark up blocks with. These
@@ -108,8 +116,13 @@ export default defineType({
 		/// https://www.sanity.io/plugins/sanity-plugin-latex-input
 		defineArrayMember({
 			type: "latex",
+<<<<<<< HEAD
 			title: "LaTeX",
 			// icon!
+=======
+			title: "",
+			icon: LatexIcon,
+>>>>>>> master
 		}),
 	],
 })

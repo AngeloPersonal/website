@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-export default function() {
+
+export default function Home() {
     return (
         <div>
             <Link href={"/article"}>Articles</Link>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import style from './navbar.module.css'
 
 export default function Navbar() {
@@ -8,6 +9,12 @@ export default function Navbar() {
                     <li>cd /home/angelo</li>
                 </ul>
             </div>
+=======
+export default function Navbar() {
+    return (
+        <nav>
+            
+>>>>>>> master
         </nav>
     )
 }

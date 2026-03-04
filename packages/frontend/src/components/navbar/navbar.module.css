@@ -1,0 +1,13 @@
+.navbar {
+    height: 44px;
+}
+
+.content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.list {
+    display: flex;
+    justify-items: center;
+}

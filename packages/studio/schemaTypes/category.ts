@@ -11,9 +11,19 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
+      name: 'parent',
+      title: 'Parent category',
+      type: 'reference', 
+      to: {type: 'category'},
+      options: {
+				filter: ({document}) => {
+					const id = (document?._id || "").replace(/^drafts\./, "")
+					return {
+						filter: "_id != $id",
+						params: {id},
+					}
+				},
+			},
     }),
     defineField({
       name: 'backgroundColor',
@@ -26,4 +36,8 @@ export default defineType({
       type: 'color',
     }),
   ],
+  preview: {
+		select: {title: "title", subtitle: "parent.title"},
+		prepare: ({title, subtitle}) => ({title, subtitle: subtitle ? `> ${subtitle}` : ""}),
+	},
 })

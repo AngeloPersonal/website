@@ -9,6 +9,9 @@ const POSTS_QUERY = defineQuery(`*[
 	_id,
 	title,
 	slug,
+<<<<<<< HEAD
+	publishedAt
+=======
 	publishedAt,
 	mainImage {
 		alt,
@@ -24,11 +27,16 @@ const POSTS_QUERY = defineQuery(`*[
 			}
 		}
 	}
+>>>>>>> master
 }`);
 
 const options = { next: { revalidate: 30 } }
 
+<<<<<<< HEAD
 export default async function Page() {
+=======
+export default async function Home() {
+>>>>>>> master
 	const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options)
 
 	return (

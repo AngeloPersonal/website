@@ -1,0 +1,24 @@
+<<<<<<< HEAD
+import Footer from "@/components/footer";
+
+
+export default function Home() {
+
+    return (
+        <>
+        <header>
+            Header
+        </header>
+        <Footer/>
+        </>
+=======
+import Link from "next/link";
+
+export default function() {
+    return (
+        <div>
+            <Link href={"/article"}>Articles</Link>
+        </div>
+>>>>>>> master
+    )
+}

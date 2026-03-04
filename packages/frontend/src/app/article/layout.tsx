@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
-import "./globals.css";
+
+import { VisualEditing } from "next-sanity/visual-editing";
+import { draftMode } from "next/headers";
+import { SanityLive } from "@/sanity/lib/live";
+import LiveEditToast from "@/components/toast";
+import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
 const geistSans = Geist({
@@ -26,7 +31,16 @@ export default async function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
+				{(await draftMode()).isEnabled && (
+					<>
+						<LiveEditToast />
+						<VisualEditing />
+					</>
+				)}
+				<SanityLive />
+				<Navbar/>
 				{children}
+				<Footer/>
 			</body>
 		</html>
 	);

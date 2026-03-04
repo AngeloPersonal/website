@@ -13,6 +13,15 @@
  */
 
 // Source: schema.json
+export type Tag = {
+  _id: string;
+  _type: "tag";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+};
+
 export type SanityImageAssetReference = {
   _ref: string;
   _type: "reference";
@@ -74,6 +83,13 @@ export type CategoryReference = {
   [internalGroqTypeReferenceTo]?: "category";
 };
 
+export type TagReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "tag";
+};
+
 export type Post = {
   _id: string;
   _type: "post";
@@ -93,6 +109,11 @@ export type Post = {
   category?: CategoryReference;
   publishedAt?: string;
   body?: BlockContent;
+  tags?: Array<
+    {
+      _key: string;
+    } & TagReference
+  >;
 };
 
 export type SanityImageCrop = {
@@ -118,7 +139,7 @@ export type Category = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  description?: string;
+  parent?: CategoryReference;
   backgroundColor?: Color;
   textColor?: Color;
 };
@@ -308,10 +329,12 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
+  | Tag
   | SanityImageAssetReference
   | BlockContent
   | AuthorReference
   | CategoryReference
+  | TagReference
   | Post
   | SanityImageCrop
   | SanityImageHotspot
