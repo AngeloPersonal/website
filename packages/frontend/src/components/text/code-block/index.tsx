@@ -1,7 +1,7 @@
 import "server-only"
 
 import type { BundledTheme } from 'shiki'
-import { codeToHtml } from 'shiki'
+import { highlightToHtml } from "./shiki"
 import { Code } from "@local/sanity-studio"
 import style from "./code.module.css"
 
@@ -22,11 +22,8 @@ export default async function CodeBlock({
 }: 
 	Props
 ) {
-	const out = await codeToHtml(value.code ?? "", {
-		lang: value.language ?? "text",
-		themes: theme,
-		defaultColor: "light",
-	})
+	console.log(value.code, value.language, theme)
+	const out = await highlightToHtml(value.code!, value.language, theme)
 
 	return (
 		<div className={style.codeBlock} >

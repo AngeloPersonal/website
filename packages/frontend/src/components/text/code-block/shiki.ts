@@ -5,18 +5,23 @@ import type {BundledLanguage, BundledTheme} from "shiki"
 
 export const highlightToHtml = cache(async (
 	code: string,
-	lang: string,
-	theme: BundledTheme,
+	lang: string | undefined,
+	themes: {
+		light: BundledTheme,
+		dark: BundledTheme
+	}
 ) => {
 	try {
 		return await codeToHtml(code, {
 			lang: (lang || "text") as BundledLanguage,
-			theme,
+			themes,
+			defaultColor: "light",
 		})
 	} catch {
 		return await codeToHtml(code, {
 			lang: "text",
-			theme,
+			themes,
+			defaultColor: "light",
 		})
 	}
 })

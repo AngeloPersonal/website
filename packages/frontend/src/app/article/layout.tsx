@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+// import { Geist, Geist_Mono, Inter } from "next/font/google";
 
 import { VisualEditing } from "next-sanity/visual-editing";
 import { draftMode } from "next/headers";
 import { SanityLive } from "@/sanity/lib/live";
 import LiveEditToast from "@/components/toast";
 import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
+// import Footer from "@/components/footer";
 
-const geistSans = Geist({
-	variable: "--font-geist-sans",
-	subsets: ["latin"],
-});
+// const geistSans = Geist({
+// 	variable: "--font-geist-sans",
+// 	subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
-	subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+// 	variable: "--font-geist-mono",
+// 	subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
 	title: "Articles",
@@ -29,19 +29,16 @@ export default async function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body className={`${geistSans.variable} ${geistMono.variable}`}>
-				{(await draftMode()).isEnabled && (
-					<>
-						<LiveEditToast />
-						<VisualEditing />
-					</>
-				)}
-				<SanityLive />
-				<Navbar/>
-				{children}
-				<Footer/>
-			</body>
-		</html>
+		<>
+			{(await draftMode()).isEnabled && (
+				<>
+					<LiveEditToast />
+					<VisualEditing />
+				</>
+			)}
+			<SanityLive />
+			<Navbar/>
+			{children}
+		</>
 	);
 }
