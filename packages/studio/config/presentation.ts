@@ -22,7 +22,7 @@ import {defineDocuments, defineLocations, DocumentLocation} from 'sanity/present
 
 export default {
     previewUrl: {
-        initial: process.env.SANITY_STUDIO_PREVIEW_ORIGIN || "http://localhost:3001/",
+        initial: process.env.SANITY_STUDIO_PREVIEW_ORIGIN || "http://localhost:3000/",
         previewMode: {
             enable: "/api/draft-mode/enable",
             disable: "/api/draft-mode/disable",

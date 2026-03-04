@@ -2,7 +2,7 @@ FROM alpine:latest AS development
 
 # Set build arguments and environment variables
 ARG PROJECT_ID
-ENV PORT=3000
+ENV PORT=3333
 
 # Enable PNPM
 RUN apk add --update nodejs npm

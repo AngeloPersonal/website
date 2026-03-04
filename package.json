@@ -18,5 +18,10 @@
   "packageManager": "pnpm@10.15.1",
   "devDependencies": {
     "concurrently": "^9.2.1"
-  }
+  },
+	"pnpm": {
+		"overrides": {
+			"prismjs": "^1.30.0"
+		}
+	}
 }
