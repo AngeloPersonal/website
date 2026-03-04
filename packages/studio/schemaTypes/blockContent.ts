@@ -18,6 +18,13 @@ export default defineType({
 		defineArrayMember({
 			title: 'Block',
 			type: 'block',
+			of: [
+				defineArrayMember({
+					type: "latex",
+					title: "Inline math",
+					// icon: mathInlineIcon,
+				}),
+			],
 			// Styles let you set what your user can mark up blocks with. These
 			// correspond with HTML tags, but you can set any title or value
 			// you want and decide how you want to deal with it where you want to
@@ -67,15 +74,28 @@ export default defineType({
 		defineArrayMember({
 			type: "code",
 			options: {
+				language: 'rust',
 				languageAlternatives: [
-					{title: 'JavaScript', value: 'javascript'},
+					{title: 'Text', value: 'text'},
 					{title: 'Rust', value: 'rust', mode: 'rust'},
+					{title: 'C++', value: 'cpp', mode: 'cpp'},
+					{title: 'JavaScript', value: 'javascript'},
+					{title: 'TypeScript', value: 'typescript'},
+					{title: 'Python', value: 'python'},
+					{title: 'Sagemath', value: 'python'},
+					{title: 'JSON', value: 'json'},
+					{title: 'SQL', value: 'sql'},
+					{title: 'MySQL', value: 'mysql'},
+					{title: 'Shell', value: 'sh'},
 				],
+				withFilename: true,
 			},
 		}),
 		/// https://www.sanity.io/plugins/latex-input
 		defineArrayMember({
 			type: "latex",
+			title: "LaTeX",
+			// icon!
 		}),
 	],
 })

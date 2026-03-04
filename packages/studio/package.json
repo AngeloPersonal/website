@@ -18,6 +18,7 @@
     "sanity"
   ],
   "dependencies": {
+    "@codemirror/lang-cpp": "^6.0.3",
     "@codemirror/lang-rust": "^6.0.2",
     "@sanity/code-input": "^7.0.8",
     "@sanity/color-input": "^6.0.4",

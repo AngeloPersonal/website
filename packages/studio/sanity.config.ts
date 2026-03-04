@@ -32,6 +32,10 @@ export default defineConfig({
 					name: 'rust', // The language is only loaded when it is selected
 					loader: () => import('@codemirror/lang-rust').then(({rust}) => rust()),
 				},
+				{
+					name: 'cpp',
+					loader: () => import('@codemirror/lang-cpp').then(({cpp}) => cpp()),
+				}
 			],
 		}),
 		latexInput(),

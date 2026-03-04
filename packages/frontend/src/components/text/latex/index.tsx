@@ -12,13 +12,17 @@ function stripDelimiters(input: string) {
 		.replace(/^\s*\\\[(.*)\\\]\s*$/s, "$1")
 }
 
-export default function LatexBlock({ value } : { value: Latex }) {
+export default function LatexBlock({ value, isInline } : { value: Latex, isInline: boolean }) {
     const latex = stripDelimiters(value?.body ?? "")
     const html = katex.renderToString(latex, {
-        displayMode: true,
+        displayMode: !isInline,
         throwOnError: false,
-        strict: "warn",
+        strict: "ignore",
     })
+
+    if (isInline) {
+        return <span dangerouslySetInnerHTML={{__html: html}} />
+    }
 
     return (
         <div
