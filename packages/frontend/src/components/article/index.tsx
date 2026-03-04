@@ -42,7 +42,7 @@ export default function Article({ post, category, author }: ArticleProps) {
                     />
                 )}
             </div>
-            <SuggestedArticles/>
+            <SuggestedArticles currentId={post._id}/>
         </>
     )
 }

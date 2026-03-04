@@ -1,4 +1,6 @@
-import {defineType, defineArrayMember} from 'sanity'
+import {defineType, defineArrayMember, defineField} from 'sanity'
+import LatexIcon from '../icons/latex'
+import MathIcon from '../icons/math'
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -31,10 +33,10 @@ export default defineType({
 			// use your content.
 			styles: [
 				{title: 'Normal', value: 'normal'},
-				{title: 'H1', value: 'h1'},
-				{title: 'H2', value: 'h2'},
-				{title: 'H3', value: 'h3'},
-				{title: 'H4', value: 'h4'},
+				// {title: 'H1', value: 'h1'}, // This is set automatically as the post title
+				{title: 'H1', value: 'h2'},
+				{title: 'H2', value: 'h3'},
+				{title: 'H3', value: 'h4'},
 				{title: 'Quote', value: 'blockquote'},
 			],
 			lists: [{title: 'Bullet', value: 'bullet'}],
@@ -69,6 +71,18 @@ export default defineType({
 		defineArrayMember({
 			type: 'image',
 			options: {hotspot: true},
+			fields:[
+				defineField({
+					name:'alt',
+					type:'string',
+					validation:Rule => Rule.required(),
+				}),
+				defineField({
+					name:'caption',
+					type:'string',
+				}),
+			],
+			validation:Rule=>Rule.required().assetRequired(),
 		}),
 		/// https://www.sanity.io/plugins/code-input
 		defineArrayMember({
@@ -91,7 +105,7 @@ export default defineType({
 				withFilename: true,
 			},
 		}),
-		/// https://www.sanity.io/plugins/latex-input
+		/// https://www.sanity.io/plugins/sanity-plugin-latex-input
 		defineArrayMember({
 			type: "latex",
 			title: "LaTeX",

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@sanity/client": "^7.15.0",
+    "@sanity/image-url": "^2.0.3",
     "katex": "^0.16.33",
     "next": "16.1.6",
     "next-sanity": "^12.1.0",

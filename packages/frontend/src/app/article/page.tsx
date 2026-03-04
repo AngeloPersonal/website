@@ -9,7 +9,21 @@ const POSTS_QUERY = defineQuery(`*[
 	_id,
 	title,
 	slug,
-	publishedAt
+	publishedAt,
+	mainImage {
+		alt,
+		caption,
+		crop,
+		hotspot,
+		asset->{
+			_id,
+			url,
+			metadata{
+				dimensions{width,height,aspectRatio},
+				lqip
+			}
+		}
+	}
 }`);
 
 const options = { next: { revalidate: 30 } }
